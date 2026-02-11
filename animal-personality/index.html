@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>动物人格测试｜15题测出你的性格动物</title>
+  <meta name="description" content="15道题快速测出你的动物人格类型：狮子、猫头鹰、海豚、狼、狐狸、熊猫、老虎、乌龟等。支持手机，结果可分享。" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🧠</div>
+        <div>
+          <div class="title">动物人格测试</div>
+          <div class="subtitle">15题 · 约1分钟 · 结果可分享</div>
+        </div>
+      </div>
+      <button id="btnTheme" class="ghost" type="button" aria-label="切换主题">🌙</button>
+    </header>
+
+    <!-- HOME -->
+    <section id="screenHome" class="card">
+      <h1>测出你的「性格动物」</h1>
+      <p class="muted">
+        这是一个轻松娱乐的性格测验。没有对错，只选最像你的。
+      </p>
+
+      <div class="pillRow">
+        <span class="pill">🎯 8种类型</span>
+        <span class="pill">📱 手机友好</span>
+        <span class="pill">🔒 不收集个人资料</span>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnStart" class="primary" type="button">开始测试</button>
+        <button id="btnHow" class="secondary" type="button">怎么玩？</button>
+      </div>
+
+      <div id="howBox" class="how hidden" role="note">
+        <ul>
+          <li>共15题，每题4个选项。</li>
+          <li>选最符合你“平常状态”的那个。</li>
+          <li>最后会给出你的主类型 + 次类型倾向。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="screenQuiz" class="card hidden" aria-live="polite">
+      <div class="progressRow">
+        <div class="progressText">
+          第 <span id="qNow">1</span> / <span id="qTotal">15</span> 题
+        </div>
+        <div class="progressBar" aria-label="答题进度">
+          <div id="progressFill" class="progressFill"></div>
+        </div>
+      </div>
+
+      <h2 id="qTitle" class="question">题目标题</h2>
+
+      <div id="options" class="options"></div>
+
+      <div class="navRow">
+        <button id="btnBack" class="ghost" type="button">← 上一题</button>
+        <button id="btnSkip" class="ghost" type="button">跳过</button>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screenResult" class="card hidden">
+      <div class="resultHead">
+        <div class="badge" id="resultEmoji">🐾</div>
+        <div>
+          <div class="muted small">你的动物人格</div>
+          <h2 id="resultName" class="resultName">类型名称</h2>
+          <div id="resultTagline" class="tagline">一句话总结</div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="box">
+          <h3>你给人的感觉</h3>
+          <p id="resultVibe" class="muted"></p>
+        </div>
+        <div class="box">
+          <h3>你的核心驱动力</h3>
+          <p id="resultDrive" class="muted"></p>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>优势</h3>
+        <ul id="resultStrengths" class="list"></ul>
+      </div>
+
+      <div class="box">
+        <h3>盲点</h3>
+        <ul id="resultBlindspots" class="list"></ul>
+      </div>
+
+      <div class="box">
+        <h3>建议</h3>
+        <ul id="resultTips" class="list"></ul>
+      </div>
+
+      <div class="box subtle">
+        <div class="muted small">次类型倾向</div>
+        <div id="resultSecond" class="secondType"></div>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnShare" class="primary" type="button">分享结果</button>
+        <button id="btnRetry" class="secondary" type="button">再测一次</button>
+      </div>
+
+      <p class="foot muted small">
+        免责声明：本测验用于娱乐与自我觉察，不构成专业心理诊断。
+      </p>
+    </section>
+
+    <footer class="footer muted small">
+      © <span id="year"></span> Personality Tests · Made for GitHub Pages
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
