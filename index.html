@@ -1,189 +1,20 @@
+
 <!doctype html>
 <html lang="zh-Hans">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Personality Tests｜人格测验合集</title>
-  <meta name="description" content="一系列好玩又高级的性格测验：动物人格、恋爱人格、OCEAN五大人格。支持手机，结果可分享。" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    :root{
-      --bg:#0b0f17;
-      --card:#111827;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --line:#1f2937;
-      --shadow: 0 12px 34px rgba(0,0,0,.35);
-      --radius: 18px;
+  <title>Personality Tests | 人格测验合集</title>
+  <meta name="description"
+        content="一系列好玩又高级的性格测验：动物人格、恋爱人格、OCEAN五大人格。支持手机，结果可分享。" />
 
-      --primary:#22c55e;
-      --primary2:#16a34a;
-      --blue:#60a5fa;
-      --pink:#fb7185;
-      --secondary:#334155;
-    }
-    [data-theme="light"]{
-      --bg:#f5f7fb;
-      --card:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --line:#e2e8f0;
-      --shadow: 0 12px 34px rgba(2,6,23,.10);
-      --secondary:#e2e8f0;
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, "PingFang SC","Microsoft YaHei", Arial;
-      color:var(--text);
-      background:
-        radial-gradient(1100px 600px at 18% -10%, rgba(34,197,94,.22), transparent 55%),
-        radial-gradient(900px 520px at 90% 0%, rgba(96,165,250,.16), transparent 55%),
-        radial-gradient(900px 520px at 70% 110%, rgba(251,113,133,.10), transparent 55%),
-        var(--bg);
-    }
-
-    .wrap{ max-width: 980px; margin:0 auto; padding: 18px; }
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; margin: 6px 0 14px;
-    }
-    .brand{ display:flex; gap:12px; align-items:center; }
-    .logo{
-      width:46px;height:46px; display:grid;place-items:center;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(34,197,94,.22), rgba(96,165,250,.16));
-      border:1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-    .title{ font-weight: 950; letter-spacing:.2px; }
-    .subtitle{ font-size: 12px; color: var(--muted); margin-top: 2px; }
-
-    .btn{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 14px;
-      cursor:pointer;
-      font-weight: 850;
-    }
-    .btn:active{ transform: translateY(1px); }
-
-    .hero{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(8px);
-    }
-    [data-theme="light"] .hero{ background: var(--card); }
-
-    h1{ margin: 6px 0 8px; font-size: 30px; }
-    p{ margin: 0; color: var(--muted); line-height: 1.7; }
-
-    .pillRow{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px; }
-    .pill{
-      font-size:12px;
-      padding: 8px 10px;
-      border:1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      background: rgba(255,255,255,.02);
-    }
-
-    .grid{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    @media(min-width:760px){
-      .grid{ grid-template-columns: 1fr 1fr 1fr; }
-    }
-
-    .card{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(8px);
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-      min-height: 190px;
-    }
-    [data-theme="light"] .card{ background: var(--card); }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-size:12px;
-      font-weight: 850;
-      color: var(--muted);
-    }
-    .tagDot{
-      width:10px;height:10px;border-radius:999px;
-      background: rgba(255,255,255,.12);
-      border:1px solid var(--line);
-    }
-    .tagDot.green{ background: rgba(34,197,94,.25); border-color: rgba(34,197,94,.30); }
-    .tagDot.pink{ background: rgba(251,113,133,.20); border-color: rgba(251,113,133,.28); }
-    .tagDot.blue{ background: rgba(96,165,250,.20); border-color: rgba(96,165,250,.28); }
-
-    .card h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing:.2px;
-    }
-    .card p{ font-size: 13px; }
-
-    .metaRow{
-      display:flex; flex-wrap:wrap; gap:8px;
-      margin-top: 2px;
-    }
-    .chip{
-      font-size: 12px;
-      padding: 6px 8px;
-      border-radius: 999px;
-      border:1px solid var(--line);
-      color: var(--muted);
-      background: rgba(255,255,255,.02);
-    }
-
-    a.cta{
-      margin-top:auto;
-      text-decoration:none;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      border-radius: 16px;
-      padding: 12px 12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      color: var(--text);
-      font-weight: 900;
-    }
-    a.cta:hover{ border-color: rgba(34,197,94,.45); }
-    .arrow{ opacity:.85; }
-
-    .footer{
-      margin: 14px 6px 6px;
-      text-align:center;
-      color: var(--muted);
-      font-size: 12px;
-    }
-    .small{ font-size: 12px; }
-  </style>
+  <!-- 只保留这一行样式引用 -->
+  <link rel="stylesheet" href="style.css?v=2" />
 </head>
 
 <body>
   <div class="wrap">
+
     <header class="topbar">
       <div class="brand">
         <div class="logo">🧠</div>
@@ -192,15 +23,16 @@
           <div class="subtitle">人格测验合集 · 适合手机 · 可分享</div>
         </div>
       </div>
-      <button id="btnTheme" class="btn" type="button">🌙</button>
+      <button id="btnTheme" class="btn">🌙</button>
     </header>
 
     <section class="hero">
-      <h1>欢迎来到人格测验专区</h1>
+      <h1>欢迎来到<span class="hl hl-blue">人格测验专区</span></h1>
       <p>
         这里收录了一系列轻量、好玩、适合传播的测验小游戏。
         你可以把结果分享给朋友一起玩，也可以持续扩展成一个测验站点。
       </p>
+
       <div class="pillRow">
         <span class="pill">📱 Mobile-friendly</span>
         <span class="pill">🔒 No login</span>
@@ -209,96 +41,91 @@
       </div>
     </section>
 
-    <section class="grid" aria-label="测试列表">
-      <!-- 1: Animal -->
+    <section class="grid">
+
+      <!-- 动物人格 -->
       <div class="card">
-        <div class="tag"><span class="tagDot green"></span> 娱乐型 · 动物人格</div>
+        <div class="tag"><span class="dot green"></span>娱乐型</div>
         <h2><span class="hl hl-green">动物人格</span>测试</h2>
-        <p>15题测出你的性格动物类型，并给出优势/盲点/建议，适合分享。</p>
+        <p>15题测出你的性格动物类型，并给出优势/盲点/建议。</p>
+
         <div class="metaRow">
           <span class="chip">15题</span>
           <span class="chip">8类型</span>
           <span class="chip">可分享</span>
         </div>
-        <a class="cta" href="./animal-personality/">
-          开始测试 <span class="arrow">→</span>
-        </a>
+
+        <a class="cta" href="./animal-personality/">开始测试 →</a>
       </div>
 
-      <!-- 2: Love -->
+      <!-- 恋爱人格 -->
       <div class="card">
-        <div class="tag"><span class="tagDot pink"></span> 甜甜风 · 恋爱人格</div>
-        <h2>恋爱人格测试（甜甜版）</h2>
-        <p>15题测出你的性格动物类型，并给出<span class="hl hl-green">优势</span>/<span class="hl hl-green">盲点</span>/<span class="hl hl-green">建议</span>，适合分享。</p>
+        <div class="tag"><span class="dot pink"></span>甜甜风</div>
+        <h2>恋爱人格测试（<span class="hl hl-pink">甜甜版</span>）</h2>
+        <p>含百分比条、最佳匹配与分享文案。</p>
+
         <div class="metaRow">
           <span class="chip">15题</span>
           <span class="chip">6类型</span>
           <span class="chip">匹配建议</span>
         </div>
-        <a class="cta" href="./love-personality/">
-          开始测试 <span class="arrow">→</span>
-        </a>
+
+        <a class="cta" href="./love-personality/">开始测试 →</a>
       </div>
 
-      <!-- 3: OCEAN -->
+      <!-- OCEAN -->
       <div class="card">
-        <div class="tag"><span class="tagDot blue"></span> 高端心理学风 · OCEAN</div>
-        <h2>OCEAN 五大人格测评</h2>
-        <p>20题量表输出五维分数（0-100），报告风解释与可执行建议。</p>
+        <div class="tag"><span class="dot blue"></span>心理学风</div>
+        <h2><span class="hl hl-blue">OCEAN</span> 五大人格测评</h2>
+        <p>20题量表输出五维分数（0-100），报告风解释与建议。</p>
+
         <div class="metaRow">
           <span class="chip">20题</span>
           <span class="chip">五维画像</span>
           <span class="chip">报告风</span>
         </div>
-        <a class="cta" href="./ocean-assessment/">
-          开始测评 <span class="arrow">→</span>
-        </a>
+
+        <a class="cta" href="./ocean-assessment/">开始测评 →</a>
       </div>
+
     </section>
 
-    <div class="footer">
-      <div>提示：以后每新增一个测验，只要在这个页面复制一张卡片并改链接即可。</div>
-      <div class="small">© <span id="year"></span> Personality Tests · Made for GitHub Pages</div>
-    </div>
+    <footer class="footer">
+      © <span id="year"></span> Personality Tests · Made for GitHub Pages
+    </footer>
+
   </div>
 
   <script>
-    // year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // theme
     const btn = document.getElementById("btnTheme");
     const root = document.documentElement;
 
     function applyTheme(mode){
-      if (mode === "light"){
+      if(mode === "light"){
         root.setAttribute("data-theme","light");
-        btn.textContent = "☀️";
+        btn.textContent="☀️";
       }else{
         root.setAttribute("data-theme","");
-        btn.textContent = "🌙";
+        btn.textContent="🌙";
       }
     }
 
     function loadTheme(){
-      try{
-        const saved = localStorage.getItem("pt_hub_theme");
-        if (saved === "light") applyTheme("light");
-        else applyTheme("dark");
-      }catch(e){
-        applyTheme("dark");
-      }
+      const saved = localStorage.getItem("pt_theme");
+      applyTheme(saved==="light"?"light":"dark");
     }
 
-    function toggleTheme(){
-      const isLight = root.getAttribute("data-theme") === "light";
-      const next = isLight ? "dark" : "light";
+    btn.onclick = ()=>{
+      const isLight = root.getAttribute("data-theme")==="light";
+      const next = isLight?"dark":"light";
+      localStorage.setItem("pt_theme",next);
       applyTheme(next);
-      try{ localStorage.setItem("pt_hub_theme", next); }catch(e){}
-    }
+    };
 
-    btn.addEventListener("click", toggleTheme);
     loadTheme();
   </script>
+
 </body>
 </html>
