@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>给爸妈的小纸条｜孩子Q&A</title>
+  <meta name="description" content="孩子回答12个问题，自动生成一份温柔的“给爸妈的小纸条”，可复制分享。" />
+  <link rel="stylesheet" href="style.css?v=1" />
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">📝</div>
+        <div>
+          <div class="title">给爸妈的小纸条</div>
+          <div class="subtitle">孩子视角 Q&A · 12题 · 温柔表达</div>
+        </div>
+      </div>
+      <button id="btnTheme" class="ghost" type="button">🌙</button>
+    </header>
+
+    <!-- HOME -->
+    <section id="home" class="card">
+      <h1>把心里话说清楚（不用吵）</h1>
+      <p class="muted">
+        这是一份“孩子写给父母的小纸条”。选你最像的答案就好。
+        最后会生成一段温柔的表达，你可以复制发给爸妈。
+      </p>
+
+      <div class="pillRow">
+        <span class="pill">🙋 孩子视角</span>
+        <span class="pill">💬 不对立</span>
+        <span class="pill">📎 可分享</span>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnStart" class="primary" type="button">开始</button>
+        <button id="btnHow" class="secondary" type="button">怎么玩</button>
+      </div>
+
+      <div id="howBox" class="how hidden">
+        <ul>
+          <li>共12题，选你最常见的感受或想法。</li>
+          <li>不想答可以跳过。</li>
+          <li>结果会用温柔语气写成“给爸妈的小纸条”。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="card hidden" aria-live="polite">
+      <div class="progressRow">
+        <div class="progressText">第 <span id="qNow">1</span>/<span id="qTotal">12</span> 题</div>
+        <div class="progressBar"><div id="progressFill" class="progressFill"></div></div>
+      </div>
+
+      <h2 id="qTitle" class="question">题目</h2>
+      <div id="options" class="options"></div>
+
+      <div class="navRow">
+        <button id="btnBack" class="ghost" type="button">← 上一题</button>
+        <button id="btnSkip" class="ghost" type="button">跳过</button>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="result" class="card hidden">
+      <div class="resultHead">
+        <div class="badge">💌</div>
+        <div>
+          <div class="muted small">自动生成</div>
+          <h2 class="resultName">给爸妈的小纸条</h2>
+          <div id="resultTag" class="tagline">一句话总结</div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="box">
+          <h3>我希望爸妈知道</h3>
+          <ul id="knowList" class="list"></ul>
+        </div>
+        <div class="box">
+          <h3>我更需要的支持</h3>
+          <ul id="needList" class="list"></ul>
+        </div>
+      </div>
+
+      <div class="box quote">
+        <div class="muted small">可复制内容</div>
+        <div id="letterText" class="letter"></div>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnCopy" class="primary" type="button">复制给爸妈</button>
+        <button id="btnRetry" class="secondary" type="button">再写一份</button>
+      </div>
+
+      <p class="muted small">
+        提醒：如果你感到长期难受、被伤害或害怕，请向可信任的大人/老师/专业人士求助。
+      </p>
+    </section>
+
+    <footer class="footer muted small">
+      © <span id="year"></span> Personality Tests · Made for GitHub Pages
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
