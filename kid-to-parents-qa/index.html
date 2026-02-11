@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>孩子对父母的Q&A｜给爸妈的小报告</title>
+  <meta name="description" content="孩子回答12个问题，自动生成一份温柔的亲子沟通小报告，可复制分享给父母。" />
+  <link rel="stylesheet" href="style.css?v=1" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">📝</div>
+        <div>
+          <div class="title">给爸妈的小报告</div>
+          <div class="subtitle">孩子版Q&A · 温柔表达 · 可复制分享</div>
+        </div>
+      </div>
+      <button id="btnTheme" class="ghost" type="button">🌙</button>
+    </header>
+
+    <!-- HOME -->
+    <section id="home" class="card">
+      <h1>把“我想说的话”说得更温柔</h1>
+      <p class="muted">
+        这是一份小小的问答。你只要选最符合你真实感受的选项，
+        最后会生成一段可以发给爸妈的文字。
+      </p>
+
+      <div class="pillRow">
+        <span class="pill">✅ 不会骂人</span>
+        <span class="pill">💬 更容易被听见</span>
+        <span class="pill">📩 一键复制</span>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnStart" class="primary" type="button">开始</button>
+        <button id="btnHow" class="secondary" type="button">说明</button>
+      </div>
+
+      <div id="howBox" class="how hidden">
+        <ul>
+          <li>共12题，约1–2分钟。</li>
+          <li>结果是“沟通建议”，不是评判父母对错。</li>
+          <li>你可以在最后编辑文字，再发给爸妈。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Q&A -->
+    <section id="qa" class="card hidden" aria-live="polite">
+      <div class="progressRow">
+        <div class="progressText">第 <span id="qNow">1</span>/<span id="qTotal">12</span> 题</div>
+        <div class="progressBar"><div id="progressFill" class="progressFill"></div></div>
+      </div>
+
+      <h2 id="qTitle" class="question">题目</h2>
+      <p id="qHint" class="muted small"></p>
+
+      <div id="options" class="options"></div>
+
+      <div id="openBox" class="openBox hidden">
+        <textarea id="openInput" class="openInput" rows="4" placeholder="你可以写一句话（可留空）"></textarea>
+        <div class="muted small">提示：写“我希望…”、“我需要…” 会更容易被听见。</div>
+      </div>
+
+      <div class="navRow">
+        <button id="btnBack" class="ghost" type="button">← 上一题</button>
+        <button id="btnSkip" class="ghost" type="button">跳过</button>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="result" class="card hidden">
+      <div class="resultHead">
+        <div class="badge">📄</div>
+        <div>
+          <div class="muted small">生成的小报告（可编辑）</div>
+          <h2 class="resultName">发给爸妈也不尴尬的版本</h2>
+          <div class="tagline" id="tagline"></div>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>给爸妈的一段话</h3>
+        <textarea id="reportText" class="report" rows="10"></textarea>
+        <div class="muted small">你可以在这里改字，改到你舒服为止。</div>
+      </div>
+
+      <div class="grid2">
+        <div class="box subtle">
+          <h3>我最需要的支持</h3>
+          <ul id="needList" class="list"></ul>
+        </div>
+        <div class="box subtle">
+          <h3>爸妈这样做我会更配合</h3>
+          <ul id="cooperateList" class="list"></ul>
+        </div>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnCopy" class="primary" type="button">复制文字</button>
+        <button id="btnRetry" class="secondary" type="button">再做一次</button>
+      </div>
+
+      <p class="muted small">
+        免责声明：本工具用于亲子沟通与表达训练，不构成专业心理诊断或医疗建议。
+      </p>
+    </section>
+
+    <footer class="footer muted small">
+      © <span id="year"></span> Personality Tests · Made for GitHub Pages
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
