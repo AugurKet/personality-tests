@@ -1,33 +1,112 @@
-/* 高端高光（不会像荧光笔那么土） */
+:root{
+  --bg:#0b0f17;
+  --card:#111827;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --line:#1f2937;
+  --shadow:0 14px 36px rgba(0,0,0,.35);
+  --radius:18px;
+}
+
+[data-theme="light"]{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#475569;
+  --line:#e2e8f0;
+  --shadow:0 14px 36px rgba(2,6,23,.10);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:ui-sans-serif,system-ui,-apple-system,"Microsoft YaHei";
+  background:radial-gradient(900px 500px at 20% -10%,rgba(34,197,94,.22),transparent 55%),
+             radial-gradient(900px 500px at 90% 0%,rgba(96,165,250,.16),transparent 55%),
+             var(--bg);
+  color:var(--text);
+}
+
+.wrap{max-width:980px;margin:auto;padding:20px}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
+      background:linear-gradient(135deg,rgba(34,197,94,.3),rgba(96,165,250,.3));
+      border:1px solid var(--line)}
+.title{font-weight:900}
+.subtitle{font-size:12px;color:var(--muted)}
+
+.btn{
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  cursor:pointer;
+  font-weight:800;
+}
+
+.hero,.card{
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.02);
+  box-shadow:var(--shadow);
+  padding:18px;
+}
+
+h1{margin:0 0 8px;font-size:30px}
+p{color:var(--muted);line-height:1.6}
+
+.pillRow{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.pill{
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  color:var(--muted)
+}
+
+.grid{display:grid;gap:14px;margin-top:18px}
+@media(min-width:760px){.grid{grid-template-columns:1fr 1fr 1fr}}
+
+.tag{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.dot{width:8px;height:8px;border-radius:999px}
+.dot.green{background:#22c55e}
+.dot.pink{background:#fb7185}
+.dot.blue{background:#60a5fa}
+
+.metaRow{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap}
+.chip{
+  font-size:12px;
+  padding:4px 8px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  color:var(--muted)
+}
+
+.cta{
+  margin-top:auto;
+  display:block;
+  text-decoration:none;
+  text-align:center;
+  padding:12px;
+  border-radius:16px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  font-weight:900;
+}
+.cta:hover{border-color:#22c55e}
+
+.footer{text-align:center;margin-top:16px;color:var(--muted);font-size:12px}
+
+/* 高光 */
 .hl{
-  padding: 0 .32em;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.03);
-  color: var(--text);
-  font-weight: 950;
-  letter-spacing: .2px;
+  padding:0 .3em;
+  border-radius:10px;
+  font-weight:900;
 }
-
-/* 不同色系：用于不同卡片 */
-.hl-green{
-  border-color: rgba(34,197,94,.35);
-  background: linear-gradient(135deg, rgba(34,197,94,.22), rgba(96,165,250,.10));
-  color: #b7f7cf;
-}
-.hl-pink{
-  border-color: rgba(251,113,133,.35);
-  background: linear-gradient(135deg, rgba(251,113,133,.20), rgba(167,139,250,.10));
-  color: #ffd2dc;
-}
-.hl-blue{
-  border-color: rgba(96,165,250,.35);
-  background: linear-gradient(135deg, rgba(96,165,250,.20), rgba(52,211,153,.10));
-  color: #cfe6ff;
-}
-
-/* 亮色主题下也要好看 */
-[data-theme="light"] .hl{ background: rgba(2,6,23,.04); }
-[data-theme="light"] .hl-green{ color:#0f5132; }
-[data-theme="light"] .hl-pink{ color:#7a0f2a; }
-[data-theme="light"] .hl-blue{ color:#0b3b74; }
+.hl-green{background:rgba(34,197,94,.25)}
+.hl-pink{background:rgba(251,113,133,.25)}
+.hl-blue{background:rgba(96,165,250,.25)}
