@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OCEAN 五大人格测评｜高端心理学风</title>
+  <meta name="description" content="20题 OCEAN 五大人格测评（开放性、尽责性、外向性、宜人性、神经质）。输出五维画像、解释与建议，结果可分享。" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🧪</div>
+        <div>
+          <div class="title">OCEAN 五大人格测评</div>
+          <div class="subtitle">20题 · 约2分钟 · 报告风输出</div>
+        </div>
+      </div>
+      <div class="topActions">
+        <button id="btnTheme" class="ghost" type="button" aria-label="切换主题">🌙</button>
+      </div>
+    </header>
+
+    <!-- HOME -->
+    <section id="screenHome" class="card">
+      <h1>生成你的五维人格画像</h1>
+      <p class="muted">
+        本测评基于五大人格（Big Five / OCEAN）框架，用于自我觉察与沟通参考。
+        请选择你“日常状态”的真实倾向（不要选你希望自己成为的样子）。
+      </p>
+
+      <div class="pillRow">
+        <span class="pill">O 开放性</span>
+        <span class="pill">C 尽责性</span>
+        <span class="pill">E 外向性</span>
+        <span class="pill">A 宜人性</span>
+        <span class="pill">N 神经质</span>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnStart" class="primary" type="button">开始测评</button>
+        <button id="btnHow" class="secondary" type="button">说明</button>
+      </div>
+
+      <div id="howBox" class="how hidden">
+        <ul>
+          <li>共20题，每题采用 1–5 分量表（非常不同意 → 非常同意）。</li>
+          <li>不收集任何个人信息，所有计算在本地完成。</li>
+          <li>结果是“倾向性描述”，不构成临床诊断。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="screenQuiz" class="card hidden" aria-live="polite">
+      <div class="progressRow">
+        <div class="progressText">
+          题目 <span id="qNow">1</span> / <span id="qTotal">20</span>
+        </div>
+        <div class="progressBar" aria-label="答题进度">
+          <div id="progressFill" class="progressFill"></div>
+        </div>
+      </div>
+
+      <div class="metaRow">
+        <div id="qDimBadge" class="dimBadge">O</div>
+        <div class="muted small" id="qDimName">开放性</div>
+      </div>
+
+      <h2 id="qTitle" class="question">题目</h2>
+
+      <div class="likert">
+        <div class="likertLabels muted small">
+          <span>非常不同意</span>
+          <span>不同意</span>
+          <span>一般</span>
+          <span>同意</span>
+          <span>非常同意</span>
+        </div>
+        <div id="likertBtns" class="likertBtns"></div>
+      </div>
+
+      <div class="navRow">
+        <button id="btnBack" class="ghost" type="button">← 上一题</button>
+        <button id="btnSkip" class="ghost" type="button">跳过</button>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screenResult" class="card hidden">
+      <div class="resultHead">
+        <div class="badge">📄</div>
+        <div>
+          <div class="muted small">人格画像报告</div>
+          <h2 class="resultName" id="resultTitle">你的 OCEAN 五维画像</h2>
+          <div class="tagline" id="resultTagline">一句话总结</div>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>五维分数</h3>
+        <div id="scoreBars" class="bars"></div>
+        <p class="muted small footNote">
+          分数范围 0–100。分数越高表示该维度的倾向越明显。
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div class="box">
+          <h3>你的主要特征</h3>
+          <ul id="resultHighlights" class="list"></ul>
+        </div>
+        <div class="box">
+          <h3>可能的盲点</h3>
+          <ul id="resultRisks" class="list"></ul>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>维度解释</h3>
+        <div id="dimensionCards" class="dimCards"></div>
+      </div>
+
+      <div class="box subtle">
+        <h3>建议（可执行）</h3>
+        <ul id="resultTips" class="list"></ul>
+      </div>
+
+      <div class="box quote">
+        <div class="muted small">可分享文案</div>
+        <div id="resultShareText" class="quoteText"></div>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnShare" class="primary" type="button">分享/复制</button>
+        <button id="btnRetry" class="secondary" type="button">重新测评</button>
+      </div>
+
+      <p class="muted small">
+        免责声明：本测评用于自我觉察与沟通参考，不构成专业心理诊断或医疗建议。
+      </p>
+    </section>
+
+    <footer class="footer muted small">
+      © <span id="year"></span> Personality Tests · Made for GitHub Pages
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
