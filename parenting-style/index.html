@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>亲子互动风格测验｜温柔鼓励版</title>
+  <meta name="description" content="15题测出你的亲子互动风格：引导型、保护型、规则型、朋友型。输出优势、盲点、孩子可能的感受与温柔建议。结果可分享。" />
+  <link rel="stylesheet" href="style.css?v=1" />
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">👨‍👩‍👧</div>
+        <div>
+          <div class="title">亲子互动风格测验</div>
+          <div class="subtitle">15题 · 温柔鼓励版 · 结果可分享</div>
+        </div>
+      </div>
+      <button id="btnTheme" class="ghost" type="button" aria-label="切换主题">🌙</button>
+    </header>
+
+    <!-- HOME -->
+    <section id="screenHome" class="card">
+      <h1>你更像哪种亲子互动风格？</h1>
+      <p class="muted">
+        这不是“好坏评判”，而是帮助你看见自己的习惯方式。
+        请选择你在日常生活里更常见的反应（不是理想中的自己）。
+      </p>
+
+      <div class="pillRow">
+        <span class="pill">🌿 温柔但有边界</span>
+        <span class="pill">🧸 更懂孩子的感受</span>
+        <span class="pill">🎯 给出可执行建议</span>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnStart" class="primary" type="button">开始测验</button>
+        <button id="btnHow" class="secondary" type="button">测验说明</button>
+      </div>
+
+      <div id="howBox" class="how hidden">
+        <ul>
+          <li>共15题，每题4个选项。</li>
+          <li>选你最常做的那一项即可。</li>
+          <li>结果会给：风格类型 + 优势/盲点 + 孩子可能的感受 + 一条建议。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="screenQuiz" class="card hidden" aria-live="polite">
+      <div class="progressRow">
+        <div class="progressText">第 <span id="qNow">1</span> / <span id="qTotal">15</span> 题</div>
+        <div class="progressBar"><div id="progressFill" class="progressFill"></div></div>
+      </div>
+
+      <h2 id="qTitle" class="question">题目</h2>
+      <div id="options" class="options"></div>
+
+      <div class="navRow">
+        <button id="btnBack" class="ghost" type="button">← 上一题</button>
+        <button id="btnSkip" class="ghost" type="button">跳过</button>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screenResult" class="card hidden">
+      <div class="resultHead">
+        <div class="badge" id="resultEmoji">🌿</div>
+        <div>
+          <div class="muted small">你的亲子互动风格</div>
+          <h2 id="resultName" class="resultName">类型</h2>
+          <div id="resultTagline" class="tagline">一句话总结</div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="box">
+          <h3>你给孩子的感觉</h3>
+          <p id="resultVibe" class="muted"></p>
+        </div>
+        <div class="box">
+          <h3>你最在意的重点</h3>
+          <p id="resultFocus" class="muted"></p>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>你的优势</h3>
+        <ul id="resultStrengths" class="list"></ul>
+      </div>
+
+      <div class="box">
+        <h3>可能的盲点</h3>
+        <ul id="resultBlindspots" class="list"></ul>
+      </div>
+
+      <div class="box subtle">
+        <h3>孩子可能会怎么感受？</h3>
+        <p id="resultChildFeel" class="muted"></p>
+      </div>
+
+      <div class="box tipBox">
+        <h3>给你的一条温柔建议</h3>
+        <div id="resultTip" class="tipText"></div>
+      </div>
+
+      <div class="box subtle">
+        <div class="muted small">次类型倾向</div>
+        <div id="resultSecond" class="secondType"></div>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnShare" class="primary" type="button">分享/复制结果</button>
+        <button id="btnRetry" class="secondary" type="button">再测一次</button>
+      </div>
+
+      <p class="muted small">
+        免责声明：本测验用于亲子沟通与自我觉察，不构成专业心理诊断或医疗建议。
+      </p>
+    </section>
+
+    <footer class="footer muted small">
+      © <span id="year"></span> Personality Tests · Made for GitHub Pages
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
