@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>校园生存风格测试｜青少年版</title>
+  <meta name="description" content="12题测出你的校园生存风格：社交王者、安静观察者、效率学霸、灵感玩家、情绪雷达、行动队长。结果可分享。" />
+  <link rel="stylesheet" href="style.css?v=1" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🎒</div>
+        <div>
+          <div class="title">校园生存风格测试</div>
+          <div class="subtitle">青少年版 · 12题 · 结果可分享</div>
+        </div>
+      </div>
+      <button id="btnTheme" class="ghost" type="button">🌙</button>
+    </header>
+
+    <!-- HOME -->
+    <section id="home" class="card">
+      <h1>你在学校属于哪种“生存风格”？</h1>
+      <p class="muted">
+        轻松测一下～没有标准答案。选你“最常见”的反应就好。
+      </p>
+
+      <div class="pillRow">
+        <span class="pill">⚡ 12题超快</span>
+        <span class="pill">😎 可晒结果</span>
+        <span class="pill">🧠 给你实用小建议</span>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnStart" class="primary">开始</button>
+        <button id="btnHow" class="secondary">怎么玩</button>
+      </div>
+
+      <div id="howBox" class="how hidden">
+        <ul>
+          <li>每题选一个最像你的。</li>
+          <li>结果是“倾向”，不是定性。</li>
+          <li>不收集资料，纯本地计算。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="card hidden" aria-live="polite">
+      <div class="progressRow">
+        <div class="progressText">第 <span id="qNow">1</span>/<span id="qTotal">12</span> 题</div>
+        <div class="progressBar"><div id="progressFill" class="progressFill"></div></div>
+      </div>
+
+      <h2 id="qTitle" class="question">题目</h2>
+      <div id="options" class="options"></div>
+
+      <div class="navRow">
+        <button id="btnBack" class="ghost">← 上一题</button>
+        <button id="btnSkip" class="ghost">跳过</button>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="result" class="card hidden">
+      <div class="resultHead">
+        <div class="badge" id="rEmoji">😎</div>
+        <div>
+          <div class="muted small">你的校园角色</div>
+          <h2 id="rName" class="resultName">类型</h2>
+          <div id="rTag" class="tagline">一句话</div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="box">
+          <h3>你的优势</h3>
+          <ul id="rPros" class="list"></ul>
+        </div>
+        <div class="box">
+          <h3>小盲点</h3>
+          <ul id="rCons" class="list"></ul>
+        </div>
+      </div>
+
+      <div class="box subtle">
+        <h3>社交建议</h3>
+        <p id="rSocial" class="muted"></p>
+      </div>
+
+      <div class="box subtle">
+        <h3>学习建议</h3>
+        <p id="rStudy" class="muted"></p>
+      </div>
+
+      <div class="box quote">
+        <div class="muted small">可晒文案</div>
+        <div id="rQuote" class="quoteText"></div>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnShare" class="primary">分享/复制</button>
+        <button id="btnRetry" class="secondary">再测一次</button>
+      </div>
+
+      <p class="muted small">
+        免责声明：本测验用于娱乐与自我觉察，不构成心理诊断。
+      </p>
+    </section>
+
+    <footer class="footer muted small">
+      © <span id="year"></span> Personality Tests · Made for GitHub Pages
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
