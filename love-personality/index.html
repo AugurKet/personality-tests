@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>恋爱人格测试｜甜甜版</title>
+  <meta name="description" content="15题测出你的恋爱人格：小太阳、棉花糖、玫瑰刺、猫系、兔系、海盐系。附匹配建议与百分比结果，可一键分享。" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">💘</div>
+        <div>
+          <div class="title">恋爱人格测试 · 甜甜版</div>
+          <div class="subtitle">15题 · 约1分钟 · 结果可分享</div>
+        </div>
+      </div>
+      <button id="btnTheme" class="ghost" type="button" aria-label="切换主题">🌙</button>
+    </header>
+
+    <!-- HOME -->
+    <section id="screenHome" class="card">
+      <h1>测出你的「恋爱人格」</h1>
+      <p class="muted">
+        这是一套轻松可爱的小测验，没有标准答案。选最像你“平常恋爱状态”的那个～
+      </p>
+
+      <div class="pillRow">
+        <span class="pill">🍓 甜甜风</span>
+        <span class="pill">📊 百分比结果</span>
+        <span class="pill">💞 最佳匹配</span>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnStart" class="primary" type="button">开始测试</button>
+        <button id="btnHow" class="secondary" type="button">怎么玩？</button>
+      </div>
+
+      <div id="howBox" class="how hidden">
+        <ul>
+          <li>共15题，每题4个选项。</li>
+          <li>按直觉选，不要“想太完美”。</li>
+          <li>最后会给你：主类型 + 次类型倾向 + 匹配建议。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="screenQuiz" class="card hidden" aria-live="polite">
+      <div class="progressRow">
+        <div class="progressText">
+          第 <span id="qNow">1</span> / <span id="qTotal">15</span> 题
+        </div>
+        <div class="progressBar">
+          <div id="progressFill" class="progressFill"></div>
+        </div>
+      </div>
+
+      <h2 id="qTitle" class="question">题目</h2>
+      <div id="options" class="options"></div>
+
+      <div class="navRow">
+        <button id="btnBack" class="ghost" type="button">← 上一题</button>
+        <button id="btnSkip" class="ghost" type="button">跳过</button>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screenResult" class="card hidden">
+      <div class="resultHead">
+        <div class="badge" id="resultEmoji">💗</div>
+        <div>
+          <div class="muted small">你的恋爱人格</div>
+          <h2 id="resultName" class="resultName">类型</h2>
+          <div id="resultTagline" class="tagline">一句话总结</div>
+        </div>
+      </div>
+
+      <div class="sparkle" aria-hidden="true">✨💞✨</div>
+
+      <div class="grid2">
+        <div class="box">
+          <h3>你给人的恋爱感觉</h3>
+          <p id="resultVibe" class="muted"></p>
+        </div>
+        <div class="box">
+          <h3>你最在意的恋爱需求</h3>
+          <p id="resultNeed" class="muted"></p>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>你的甜甜优势</h3>
+        <ul id="resultStrengths" class="list"></ul>
+      </div>
+
+      <div class="box">
+        <h3>小小盲点</h3>
+        <ul id="resultBlindspots" class="list"></ul>
+      </div>
+
+      <div class="box">
+        <h3>适合你的相处方式</h3>
+        <ul id="resultTips" class="list"></ul>
+      </div>
+
+      <div class="box subtle">
+        <h3>你的恋爱配方（百分比）</h3>
+        <div id="bars" class="bars"></div>
+      </div>
+
+      <div class="box match">
+        <div class="muted small">最佳匹配</div>
+        <div id="resultMatch" class="matchLine"></div>
+        <div id="resultMatchTip" class="muted"></div>
+      </div>
+
+      <div class="box subtle">
+        <div class="muted small">次类型倾向</div>
+        <div id="resultSecond" class="secondType"></div>
+      </div>
+
+      <div class="box quote">
+        <div class="muted small">可晒朋友圈甜甜文案</div>
+        <div id="resultQuote" class="quoteText"></div>
+      </div>
+
+      <div class="ctaRow">
+        <button id="btnShare" class="primary" type="button">分享结果</button>
+        <button id="btnRetry" class="secondary" type="button">再测一次</button>
+      </div>
+
+      <p class="foot muted small">
+        免责声明：本测验用于娱乐与自我觉察，不构成专业心理诊断。
+      </p>
+    </section>
+
+    <footer class="footer muted small">
+      © <span id="year"></span> Personality Tests · Made for GitHub Pages
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
