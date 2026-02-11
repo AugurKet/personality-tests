@@ -1,0 +1,226 @@
+:root{
+  --bg:#070b12;
+  --card:#0f1625;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --line:#1e2a40;
+  --shadow: 0 18px 38px rgba(0,0,0,.35);
+  --radius: 18px;
+
+  --primary:#60a5fa;   /* 蓝 */
+  --primary2:#2563eb;  /* 深蓝 */
+  --accent:#34d399;    /* 绿 */
+  --secondary:#1f2a44;
+}
+
+[data-theme="light"]{
+  --bg:#f6f8fc;
+  --card:#ffffff;
+  --text:#0b1220;
+  --muted:#475569;
+  --line:#e6ecf5;
+  --shadow: 0 18px 38px rgba(2,6,23,.10);
+  --secondary:#eaf0fb;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "PingFang SC","Microsoft YaHei", Arial;
+  color: var(--text);
+  background:
+    radial-gradient(1000px 600px at 20% -10%, rgba(96,165,250,.20), transparent 55%),
+    radial-gradient(900px 520px at 90% 0%, rgba(52,211,153,.12), transparent 55%),
+    var(--bg);
+}
+
+.wrap{ max-width: 900px; margin: 0 auto; padding: 18px; }
+
+.topbar{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; margin: 6px 0 14px;
+}
+.brand{ display:flex; gap:12px; align-items:center; }
+.logo{
+  width:44px;height:44px; display:grid;place-items:center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(96,165,250,.22), rgba(52,211,153,.16));
+  border:1px solid var(--line);
+}
+.title{ font-weight:900; letter-spacing:.3px; }
+.subtitle{ font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+.card{
+  background: rgba(255,255,255,.02);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  backdrop-filter: blur(8px);
+}
+[data-theme="light"] .card{ background: var(--card); }
+
+h1{ font-size: 28px; margin: 6px 0 8px; }
+h2{ font-size: 22px; margin: 10px 0 12px; }
+h3{ font-size: 16px; margin: 0 0 10px; }
+
+.muted{ color: var(--muted); line-height:1.65; }
+.small{ font-size: 12px; }
+.hidden{ display:none !important; }
+
+.pillRow{ display:flex; flex-wrap:wrap; gap:10px; margin: 12px 0 6px; }
+.pill{
+  font-size: 12px; padding: 8px 10px;
+  border:1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  background: rgba(255,255,255,.02);
+}
+
+.ctaRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+
+button{
+  border: 1px solid transparent;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 800;
+  cursor: pointer;
+  color: var(--text);
+  background: transparent;
+}
+button:active{ transform: translateY(1px); }
+
+.primary{
+  background: linear-gradient(180deg, var(--primary), var(--primary2));
+  color: #07142b;
+  border-color: rgba(0,0,0,.05);
+}
+.secondary{ background: var(--secondary); border-color: var(--line); }
+.ghost{ border-color: var(--line); background: rgba(255,255,255,.02); }
+
+.how{ margin-top: 12px; border-top: 1px dashed var(--line); padding-top: 12px; }
+.how ul{ margin:0; padding-left: 18px; }
+
+.progressRow{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom: 10px; }
+.progressText{ color: var(--muted); font-size: 13px; }
+.progressBar{
+  flex:1; height: 10px; border-radius: 999px; border:1px solid var(--line);
+  background: rgba(255,255,255,.02); overflow:hidden;
+}
+.progressFill{
+  height:100%; width:0%;
+  background: linear-gradient(90deg, rgba(96,165,250,.95), rgba(52,211,153,.85));
+  border-radius: 999px;
+  transition: width .25s ease;
+}
+
+.metaRow{ display:flex; align-items:center; gap:10px; margin: 8px 0 4px; }
+.dimBadge{
+  width: 30px; height: 30px;
+  display:grid; place-items:center;
+  border-radius: 10px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.02);
+  font-weight: 900;
+}
+
+.question{ line-height:1.35; margin-top: 8px; }
+
+.likert{ margin-top: 10px; }
+.likertLabels{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap:8px;
+  margin-bottom: 8px;
+}
+.likertBtns{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap:10px;
+}
+.lbtn{
+  padding: 14px 10px;
+  border-radius: 16px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.02);
+  font-weight: 900;
+}
+.lbtn:hover{ border-color: rgba(96,165,250,.55); }
+.lbtn.active{
+  border-color: rgba(52,211,153,.9);
+  box-shadow: 0 0 0 3px rgba(52,211,153,.12) inset;
+}
+
+.navRow{ display:flex; justify-content:space-between; margin-top: 12px; gap:10px; }
+
+.resultHead{ display:flex; gap:12px; align-items:center; margin-bottom: 10px; }
+.badge{
+  width:56px;height:56px; border-radius: 18px;
+  display:grid;place-items:center; font-size: 26px;
+  background: rgba(255,255,255,.02);
+  border: 1px solid var(--line);
+}
+.resultName{ margin: 4px 0 4px; }
+.tagline{ color: var(--muted); }
+
+.box{
+  border:1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+  background: rgba(255,255,255,.02);
+}
+.subtle{ opacity:.97; }
+
+.grid2{ display:grid; grid-template-columns: 1fr; gap:10px; margin: 10px 0; }
+@media(min-width:760px){ .grid2{ grid-template-columns: 1fr 1fr; } }
+
+.list{ margin: 0; padding-left: 18px; }
+.list li{ margin: 6px 0; color: var(--muted); }
+
+.bars{ display:grid; gap:12px; margin-top: 10px; }
+.barRow{ display:grid; gap:7px; }
+.barTop{ display:flex; justify-content:space-between; gap:10px; font-weight:900; }
+.barTop span{ color: var(--muted); font-weight:800; }
+
+.barTrack{
+  height: 12px; border-radius: 999px; border:1px solid var(--line);
+  background: rgba(255,255,255,.02); overflow:hidden;
+}
+.barFill{
+  height:100%; width:0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(96,165,250,.95), rgba(52,211,153,.90));
+  transition: width .55s ease;
+}
+
+.footNote{ margin-top: 10px; }
+
+.dimCards{ display:grid; gap:10px; }
+.dimCard{
+  border:1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+  background: rgba(255,255,255,.02);
+}
+.dimHead{ display:flex; justify-content:space-between; gap:10px; align-items:center; }
+.dimHead strong{ font-weight: 950; }
+.dimLevel{
+  padding: 6px 10px;
+  border-radius: 999px;
+  border:1px solid var(--line);
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.quote{
+  background: linear-gradient(135deg, rgba(96,165,250,.12), rgba(52,211,153,.10));
+}
+.quoteText{
+  margin-top: 8px;
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+.footer{ margin: 14px 6px 6px; text-align:center; }
