@@ -494,4 +494,3 @@ const ZODIAC = [
   
 ];
 
-export default ZODIAC;
