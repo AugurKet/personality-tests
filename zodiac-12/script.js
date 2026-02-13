@@ -1,7 +1,5 @@
 const el = (id) => document.getElementById(id);
-
-const YEAR = new Date().getFullYear();
-el("year").textContent = YEAR;
+el("year").textContent = new Date().getFullYear();
 
 const btnTheme = el("btnTheme");
 const search = el("search");
@@ -16,168 +14,300 @@ const mEmoji = el("mEmoji");
 const mName  = el("mName");
 const mDate  = el("mDate");
 const mQuote = el("mQuote");
+
 const mKeywords = el("mKeywords");
+const mDrive = el("mDrive");
+const mOuterInner = el("mOuterInner");
+const mSafety = el("mSafety");
+
 const mPros = el("mPros");
 const mCons = el("mCons");
-const mLove = el("mLove");
-const mWork = el("mWork");
+const mTriggers = el("mTriggers");
+const mAtBest = el("mAtBest");
+
+const mComm = el("mComm");
+const mConflict = el("mConflict");
+const mRepair = el("mRepair");
+const mDontSay = el("mDontSay");
+
+const mCrush = el("mCrush");
+const mIntimacy = el("mIntimacy");
+const mLoveMines = el("mLoveMines");
+const mLovePlus = el("mLovePlus");
+
+const mEnv = el("mEnv");
+const mHack = el("mHack");
+const mStuck = el("mStuck");
+const mGrowth = el("mGrowth");
+
 const mTips = el("mTips");
+const mDo = el("mDo");
+const mDont = el("mDont");
+const mOneLiner = el("mOneLiner");
+
+const mMatchGood = el("mMatchGood");
+const mMatchHard = el("mMatchHard");
+const mMatchNote = el("mMatchNote");
+
+const panels = {
+  overview: el("panelOverview"),
+  deep: el("panelDeep"),
+  talk: el("panelTalk"),
+  love: el("panelLove"),
+  work: el("panelWork"),
+  tips: el("panelTips"),
+  match: el("panelMatch"),
+};
 
 let activeFilter = "all";
 let active = null;
 
-const ELEMENT_LABEL = {
-  fire: "火象",
-  earth: "土象",
-  air: "风象",
-  water: "水象",
-};
+const ELEMENT_LABEL = { fire:"火象", earth:"土象", air:"风象", water:"水象" };
 
+// 深度数据结构（示范：白羊/金牛）
 const ZODIAC = [
   {
     key:"aries", cn:"白羊座", en:"Aries", emoji:"♈︎", date:"3/21 - 4/19", elem:"fire",
     quote:"直球第一名：喜欢就冲，讨厌就走，最怕磨叽。",
-    keywords:["行动","热血","直接","好胜","三分钟热度"],
-    pros:["启动快、说干就干","有冲劲，能带动团队","爱憎分明，不玩暗的"],
-    cons:["急、容易上头","不爱被管","热情来得快去得也快"],
-    love:"恋爱像开加速：喜欢会很明显，但需要被尊重空间与节奏。",
-    work:"适合冲锋型任务、开荒项目；不适合无止境重复与拖拉流程。",
-    tips:"跟白羊相处：少绕弯子，多给明确选项；夸TA的行动力比夸颜值更有效。",
+    keywords:["行动","热血","直接","好胜","快节奏"],
+    drive:"想赢、想快、想证明“我可以”。核心不是冲动，而是对生命力与主导感的渴望。",
+    outerInner:[
+      "外在：很强势、很快、很敢。/ 内在：其实怕被否定、怕浪费时间。",
+      "外在：不拐弯抹角。/ 内在：希望对方也坦诚，不要玩心理战。"
+    ],
+    safety:[
+      "说清楚规则与边界，让TA知道“怎么做才算对”",
+      "给选择题，不要给无限拖延：‘要A还是B？’",
+      "认可行动与勇气：比夸结果更能稳住TA"
+    ],
+    pros:[
+      "启动快、抗拒拖延：能把事情推起来",
+      "遇事敢扛，勇于承担",
+      "表达直接，关系里少暗箭"
+    ],
+    cons:[
+      "容易上头：先冲再补救",
+      "耐心较短：对慢节奏会烦",
+      "不爱被控制：越管越反弹"
+    ],
+    triggers:[
+      "被羞辱/被当众否定",
+      "被拖着不做决定",
+      "被怀疑动机：‘你是不是故意的？’"
+    ],
+    atBest:[
+      "有挑战、有舞台、有反馈",
+      "目标清晰、节奏快",
+      "被信任：自己能做主"
+    ],
+    comm:[
+      "喜欢直说：重点先讲结论，再讲原因",
+      "更吃“明确回应”：可以/不行/什么时候",
+      "沟通时别绕圈：会被判定为浪费时间"
+    ],
+    conflict:[
+      "吵架像短跑：爆发快、结束也快",
+      "气头上会说狠话，但不一定记仇",
+      "需要‘下台阶’：给个面子就能和好"
+    ],
+    repair:"先承认情绪（我知道你很火）→ 再给选项（我们现在要A还是B）→ 最后落行动（我先做X）。",
+    dontSay:[
+      "“你能不能成熟一点？”",
+      "“随便你啦”（白羊会被气到更上头）",
+      "“我不想跟你讲”（会被理解为冷战）"
+    ],
+    crush:"喜欢一个人会变得很主动：找你、约你、保护你，‘直球’就是他的浪漫。",
+    intimacy:[
+      "要被尊重：别管太细、别查岗式控制",
+      "要一起行动：一起运动/旅行/做项目更亲密",
+      "要肯定：认可TA的努力与勇气"
+    ],
+    loveMines:[
+      "冷处理、消失、不回信息",
+      "反复试探、玩暧昧拉扯",
+      "公开拆台/挖苦"
+    ],
+    lovePlus:"给TA一个挑战目标（一起进步）+ 给TA明确偏爱（我选你）+ 保留一点空间（你去冲，我在）。",
+    env:[
+      "快节奏、结果导向、能尝试新东西的环境",
+      "允许试错与快速迭代",
+      "权责清晰：少扯皮"
+    ],
+    hack:[
+      "拆成短冲刺：25–40分钟一轮，立刻见成果",
+      "先做最难的：越拖越烦",
+      "公开承诺：对外说了就更容易做到"
+    ],
+    stuck:[
+      "长期重复、没有挑战的任务",
+      "需要长时间等待反馈的工作",
+      "被微管理：细节被管会烦"
+    ],
+    growth:"练习‘慢一点也不会输’：先停3秒再回应，会让你更强而不是更弱。",
+    tips:"跟白羊相处：少绕弯子、多行动；给明确回应与尊重空间，关系会非常顺。",
+    do:[
+      "用明确句：可以/不行/什么时候",
+      "夸行动力与担当",
+      "给空间但保持回应"
+    ],
+    dont:[
+      "冷战/不解释就消失",
+      "用羞辱方式纠错",
+      "无限拖延不做决定"
+    ],
+    oneLiner:"白羊不是没脑子，是太快；他要的是直球、尊重、和一起冲的伙伴。",
+    matchGood:[
+      "火象/风象更容易合拍：节奏快、沟通直",
+      "能给空间的人：不黏但稳定",
+      "敢一起做事的人：一起成长最稳"
+    ],
+    matchHard:[
+      "强控制型：越管越炸",
+      "长期冷处理型：会直接判定‘不爱了’",
+      "极慢节奏又不沟通：会被白羊嫌弃"
+    ],
+    matchNote:"‘合拍’不是星座决定，而是节奏与沟通方式。白羊最需要：明确+尊重+行动。",
     wiki:"https://zh.wikipedia.org/wiki/%E7%99%BD%E7%BE%8A%E5%BA%A7"
   },
+
   {
     key:"taurus", cn:"金牛座", en:"Taurus", emoji:"♉︎", date:"4/20 - 5/20", elem:"earth",
     quote:"慢热但很稳：一旦认定，会用行动把你放进生活里。",
-    keywords:["稳定","务实","享受","固执","安全感"],
-    pros:["靠谱，承诺感强","很会把日子过好","抗压稳，不轻易崩"],
-    cons:["慢、很难被催动","固执，改主意不容易","不喜欢被打断节奏"],
-    love:"需要安全感与确定性；在一起后会越来越照顾人，但不爱被逼表态。",
-    work:"擅长长期积累型工作、财务/运营/流程；不爱频繁变更需求。",
-    tips:"跟金牛相处：别用嘴催，用“清晰计划+可兑现承诺”；偶尔来点高质量陪伴会加分。",
+    keywords:["稳定","务实","耐心","享受","安全感"],
+    drive:"想稳、想确定、想掌控生活的节奏。核心不是固执，而是害怕不确定。",
+    outerInner:[
+      "外在：慢、淡定。/ 内在：其实非常在意是否可靠、是否可持续。",
+      "外在：不说甜话。/ 内在：会用行动照顾你，把你纳入生活规划。"
+    ],
+    safety:[
+      "承诺要可兑现：说到做到",
+      "节奏可预期：提前讲计划，不临时变卦",
+      "尊重TA的界限与习惯：别硬改"
+    ],
+    pros:[
+      "稳定可靠，抗压强",
+      "长期主义：会把事情做扎实",
+      "生活能力强：会把日子过好"
+    ],
+    cons:[
+      "启动慢：被催会更慢",
+      "固执：改主意成本高",
+      "不舒服时会‘冷’：用沉默自保"
+    ],
+    triggers:[
+      "突然变化/临时通知",
+      "反复失信：说了不做",
+      "被轻视努力：‘这很简单啊’"
+    ],
+    atBest:[
+      "有稳定节奏 + 清晰目标",
+      "被信任、被依赖",
+      "环境舒适：吃得好睡得好更强"
+    ],
+    comm:[
+      "喜欢具体：别空口画饼",
+      "更信行动：少说多做",
+      "沟通要给时间：不要逼立刻答"
+    ],
+    conflict:[
+      "不吵但会记：忍到极限会一次爆",
+      "争吵点多与‘原则/价值’有关",
+      "需要‘慢慢谈’：越逼越关机"
+    ],
+    repair:"先稳定节奏（我不会消失）→ 承认影响（我这次确实让你不安）→ 给可兑现承诺（下次我会提前说）。",
+    dontSay:[
+      "“你怎么这么慢？”",
+      "“你太固执了”（会更固执）",
+      "“随便啦，算了”（金牛会当你不在乎）"
+    ],
+    crush:"心动是‘越来越常出现在你生活里’：会照顾、会安排、会把你当自己人。",
+    intimacy:[
+      "要稳定与确定：不喜欢忽冷忽热",
+      "要生活层面的陪伴：一起吃饭、一起过日子",
+      "要尊重：别公开让TA难堪"
+    ],
+    loveMines:[
+      "反复试探与不确定承诺",
+      "临时变卦、放鸽子",
+      "嘲笑TA的坚持/习惯"
+    ],
+    lovePlus:"用可兑现的小承诺累积信任 + 给舒适高质量陪伴（吃饭/旅行/仪式感）+ 不逼但持续稳定。",
+    env:[
+      "稳定、规则清晰的环境",
+      "能沉淀与积累的岗位",
+      "少变更、少折腾"
+    ],
+    hack:[
+      "固定时间块：让节奏可预期",
+      "先做最确定的部分：逐步推进",
+      "用清单：越可见越安心"
+    ],
+    stuck:[
+      "频繁变更需求",
+      "没有边界的加塞任务",
+      "只讲理想不讲资源"
+    ],
+    growth:"练习‘小范围尝试’：每次改变一点点，你会更自由，而不是更不安。",
+    tips:"跟金牛相处：别催、别飘、别失信；稳定与兑现就是最大的浪漫。",
+    do:[
+      "提前说计划，少临时变卦",
+      "用行动兑现承诺",
+      "给舒适感与仪式感"
+    ],
+    dont:[
+      "用催促当管理",
+      "失信/放鸽子",
+      "当众让TA难堪"
+    ],
+    oneLiner:"金牛不难哄：你稳定、你兑现、你尊重，他就会把你当一辈子的人。",
+    matchGood:[
+      "能稳定输出的人：节奏一致更安心",
+      "尊重边界的人：不逼不控",
+      "愿意一起经营生活的人"
+    ],
+    matchHard:[
+      "太飘太变的人：金牛会焦虑",
+      "不兑现的人：信任塌一次就很难修",
+      "喜欢刺激但不负责的人"
+    ],
+    matchNote:"金牛的核心不是慢，是‘可靠’。你可靠，他就非常深情。",
     wiki:"https://zh.wikipedia.org/wiki/%E9%87%91%E7%89%9B%E5%BA%A7"
   },
-  {
-    key:"gemini", cn:"双子座", en:"Gemini", emoji:"♊︎", date:"5/21 - 6/21", elem:"air",
-    quote:"脑子像开了多标签：好奇心驱动，讨厌无聊。",
-    keywords:["好奇","表达","反差","机灵","三心二意(误)"],
-    pros:["沟通能力强","学习快，适应力强","自带趣味，社交润滑剂"],
-    cons:["注意力容易跳","情绪变化快","不喜欢被贴标签/束缚"],
-    love:"需要交流与新鲜感；你越有趣，双子越认真。",
-    work:"适合内容、销售、产品、媒体；不适合长期单一重复任务。",
-    tips:"跟双子相处：多聊、多新鲜、多给空间；别用“你到底想怎样”逼死TA。",
-    wiki:"https://zh.wikipedia.org/wiki/%E5%8F%8C%E5%AD%90%E5%BA%A7"
-  },
-  {
-    key:"cancer", cn:"巨蟹座", en:"Cancer", emoji:"♋︎", date:"6/22 - 7/22", elem:"water",
-    quote:"外表软，内心很强：在乎的人才看得到TA的敏感与温柔。",
-    keywords:["顾家","敏感","保护","情绪","念旧"],
-    pros:["很会照顾人","共情力强","对关系认真且有耐心"],
-    cons:["容易想太多","安全感不足会退缩","受伤后记很久"],
-    love:"需要被珍惜与被回应；稳定、细节与仪式感很重要。",
-    work:"适合服务、教育、护理、HR；在有温度的团队里会超强。",
-    tips:"跟巨蟹相处：别冷处理；一句“我在”胜过十句道理。",
-    wiki:"https://zh.wikipedia.org/wiki/%E5%B7%A8%E8%9F%B9%E5%BA%A7"
-  },
-  {
-    key:"leo", cn:"狮子座", en:"Leo", emoji:"♌︎", date:"7/23 - 8/22", elem:"fire",
-    quote:"要面子也要里子：被认可会开挂，被否定会炸毛。",
-    keywords:["自信","舞台","热情","慷慨","自尊"],
-    pros:["领导感强","讲义气，护短但护得住","能把场子撑起来"],
-    cons:["爱面子，不爱示弱","情绪来得快","不喜欢被忽视"],
-    love:"喜欢明确的偏爱与欣赏；被崇拜不等于被纵容，边界也要讲清楚。",
-    work:"适合带队、对外、表达型岗位；关键是“让TA有成就感”。",
-    tips:"跟狮子相处：夸要真诚具体；公开给面子，私下讲道理。",
-    wiki:"https://zh.wikipedia.org/wiki/%E7%8B%AE%E5%AD%90%E5%BA%A7"
-  },
-  {
-    key:"virgo", cn:"处女座", en:"Virgo", emoji:"♍︎", date:"8/23 - 9/22", elem:"earth",
-    quote:"细节控不是挑刺，是认真：想把事情做对，也想把你照顾好。",
-    keywords:["细节","标准","效率","克制","焦虑"],
-    pros:["靠谱、执行强","会优化流程","对自己负责也对别人负责"],
-    cons:["容易紧绷","表达不够甜但很实在","对不确定很敏感"],
-    love:"爱是服务与行动；嘴不甜但会默默把你生活打理顺。",
-    work:"适合分析、运营、工程、医药；在规则清晰的环境最强。",
-    tips:"跟处女相处：别只说“放轻松”，给“可执行方案”；认可TA的努力很重要。",
-    wiki:"https://zh.wikipedia.org/wiki/%E5%A4%84%E5%A5%B3%E5%BA%A7"
-  },
-  {
-    key:"libra", cn:"天秤座", en:"Libra", emoji:"♎︎", date:"9/23 - 10/23", elem:"air",
-    quote:"优雅与公平的代言：不喜欢冲突，但不代表没立场。",
-    keywords:["平衡","审美","社交","犹豫","公平"],
-    pros:["会照顾气氛","审美在线","善于协调与谈判"],
-    cons:["选择困难","讨厌撕破脸","容易为了和谐委屈自己"],
-    love:"需要舒服的相处与尊重；浪漫与体面很加分。",
-    work:"适合公关、设计、法律、HR；擅长在复杂关系里找平衡点。",
-    tips:"跟天秤相处：给选项别给难题；别逼TA立刻决定，给一点时间会更有效。",
-    wiki:"https://zh.wikipedia.org/wiki/%E5%A4%A9%E7%A7%A4%E5%BA%A7"
-  },
-  {
-    key:"scorpio", cn:"天蝎座", en:"Scorpio", emoji:"♏︎", date:"10/24 - 11/22", elem:"water",
-    quote:"深度玩家：要么不开始，一开始就很认真。",
-    keywords:["深度","直觉","占有欲","边界","极致"],
-    pros:["专注、韧性强","洞察力强","对在乎的人非常护短"],
-    cons:["不爱示弱","猜来猜去容易累","受伤会记仇(其实是自保)"],
-    love:"需要忠诚与信任；你越真诚，天蝎越温柔。",
-    work:"适合研究、金融、风控、侦查类；能把复杂问题咬到解决。",
-    tips:"跟天蝎相处：别玩套路；说到做到，尊重隐私边界。",
-    wiki:"https://zh.wikipedia.org/wiki/%E5%A4%A9%E8%9D%8E%E5%BA%A7"
-  },
-  {
-    key:"sagittarius", cn:"射手座", en:"Sagittarius", emoji:"♐︎", date:"11/23 - 12/21", elem:"fire",
-    quote:"自由派：人生是旷野，不是轨道。",
-    keywords:["自由","乐观","探索","直率","不爱被管"],
-    pros:["正能量强","视野开阔","很会带你去看更大的世界"],
-    cons:["不喜欢束缚","承诺需要时间","容易一时兴起又跳频道"],
-    love:"需要空间与共同成长；越是“给自由”，越可能留下来。",
-    work:"适合出差、内容、教育、市场；不适合微管理与无意义汇报。",
-    tips:"跟射手相处：少查岗，多约体验；把规则说清楚，但别用控制当爱。",
-    wiki:"https://zh.wikipedia.org/wiki/%E5%B0%84%E6%89%8B%E5%BA%A7"
-  },
-  {
-    key:"capricorn", cn:"摩羯座", en:"Capricorn", emoji:"♑︎", date:"12/22 - 1/19", elem:"earth",
-    quote:"把责任当浪漫：不说“我爱你”，但会说“我来扛”。",
-    keywords:["目标","克制","责任","长期主义","慢热"],
-    pros:["抗压强、能扛事","目标清晰","靠谱到让人安心"],
-    cons:["不太会表达情绪","容易把自己逼太紧","需要时间热起来"],
-    love:"爱是稳定与兑现；需要被理解“他不说不代表不在乎”。",
-    work:"适合管理、策略、运营、工程；在长期赛道里更容易赢。",
-    tips:"跟摩羯相处：别只要情绪价值，也要给现实支持；认可TA的付出，会更愿意柔软。",
-    wiki:"https://zh.wikipedia.org/wiki/%E6%91%A9%E7%BE%AF%E5%BA%A7"
-  },
-  {
-    key:"aquarius", cn:"水瓶座", en:"Aquarius", emoji:"♒︎", date:"1/20 - 2/18", elem:"air",
-    quote:"人间观察员：你越想定义TA，TA越想逃。",
-    keywords:["独立","脑洞","理性","反传统","界限感"],
-    pros:["思路新","尊重差异","朋友感强，不黏但很真"],
-    cons:["情绪表达少","忽冷忽热（其实是需要空间）","不喜欢被控制"],
-    love:"需要精神共鸣与自由；像朋友一样相爱最稳。",
-    work:"适合创新、科技、产品、研究；讨厌无脑规则与形式主义。",
-    tips:"跟水瓶相处：别PUA别控制；多聊观点、少逼情绪，给空间反而更靠近。",
-    wiki:"https://zh.wikipedia.org/wiki/%E6%B0%B4%E7%93%B6%E5%BA%A7"
-  },
-  {
-    key:"pisces", cn:"双鱼座", en:"Pisces", emoji:"♓︎", date:"2/19 - 3/20", elem:"water",
-    quote:"浪漫与共情的集合体：你一句话，TA能脑补一整部剧。",
-    keywords:["浪漫","共情","想象力","逃避","柔软"],
-    pros:["很会理解人","创意强","氛围感王者"],
-    cons:["容易受环境影响","不开心会躲起来","边界感不足会累"],
-    love:"需要温柔与安全感；被理解是最大的浪漫。",
-    work:"适合创意、艺术、咨询、助人行业；需要清晰边界与节奏。",
-    tips:"跟双鱼相处：多肯定、多温柔；同时帮TA把“梦”落到“计划”。",
-    wiki:"https://zh.wikipedia.org/wiki/%E5%8F%8C%E9%B1%BC%E5%BA%A7"
-  },
+
+  // TODO：把其他10个星座按同样结构补齐
 ];
 
-// ---------- UI ----------
+// --------- Helpers ----------
+function normalize(s){ return (s||"").toLowerCase().replace(/\s+/g,""); }
+function fillList(ul, arr){
+  ul.innerHTML = "";
+  (arr || []).forEach(x => {
+    const li = document.createElement("li");
+    li.textContent = x;
+    ul.appendChild(li);
+  });
+}
+function fillChips(box, arr){
+  box.innerHTML = (arr || []).map(k => `<span class="chip">${k}</span>`).join("");
+}
+
+// --------- Tabs ----------
+function showTab(tab){
+  document.querySelectorAll(".tabBtn").forEach(b=>b.classList.remove("active"));
+  document.querySelector(`.tabBtn[data-tab="${tab}"]`)?.classList.add("active");
+
+  Object.values(panels).forEach(p=>p.classList.add("hidden"));
+  panels[tab]?.classList.remove("hidden");
+}
+
+// --------- Grid ----------
 function renderGrid(list){
   grid.innerHTML = "";
   list.forEach(z => {
     const div = document.createElement("div");
     div.className = "card";
     div.tabIndex = 0;
-    div.setAttribute("role", "button");
-    div.setAttribute("aria-label", `${z.cn} ${z.en} 详情`);
-
+    div.setAttribute("role","button");
     div.innerHTML = `
       <div class="cardTop">
         <div class="zEmoji">${z.emoji}</div>
@@ -186,17 +316,15 @@ function renderGrid(list){
       <div class="zName">${z.cn} <span class="muted">· ${z.en}</span></div>
       <div class="zMeta">${z.date}</div>
     `;
-
-    const open = () => openModal(z.key);
-    div.addEventListener("click", open);
-    div.addEventListener("keydown", (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); open(); } });
-
+    const open = ()=>openModal(z.key);
+    div.onclick = open;
+    div.onkeydown = (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); open(); } };
     grid.appendChild(div);
   });
 }
 
 function openModal(key){
-  const z = ZODIAC.find(x => x.key === key);
+  const z = ZODIAC.find(x=>x.key===key);
   if(!z) return;
   active = z;
 
@@ -205,70 +333,102 @@ function openModal(key){
   mDate.textContent  = `${z.date} · ${ELEMENT_LABEL[z.elem]}`;
   mQuote.textContent = z.quote;
 
-  mKeywords.innerHTML = z.keywords.map(k => `<span class="chip">${k}</span>`).join("");
-  mPros.innerHTML = z.pros.map(x => `<li>${x}</li>`).join("");
-  mCons.innerHTML = z.cons.map(x => `<li>${x}</li>`).join("");
-  mLove.textContent = z.love;
-  mWork.textContent = z.work;
-  mTips.textContent = z.tips;
+  fillChips(mKeywords, z.keywords);
+  mDrive.textContent = z.drive || "";
+  fillList(mOuterInner, z.outerInner);
+  fillList(mSafety, z.safety);
 
-  btnWiki.href = z.wiki;
+  fillList(mPros, z.pros);
+  fillList(mCons, z.cons);
+  fillList(mTriggers, z.triggers);
+  fillList(mAtBest, z.atBest);
+
+  fillList(mComm, z.comm);
+  fillList(mConflict, z.conflict);
+  mRepair.textContent = z.repair || "";
+  fillList(mDontSay, z.dontSay);
+
+  mCrush.textContent = z.crush || "";
+  fillList(mIntimacy, z.intimacy);
+  fillList(mLoveMines, z.loveMines);
+  mLovePlus.textContent = z.lovePlus || "";
+
+  fillList(mEnv, z.env);
+  fillList(mHack, z.hack);
+  fillList(mStuck, z.stuck);
+  mGrowth.textContent = z.growth || "";
+
+  mTips.textContent = z.tips || "";
+  fillList(mDo, z.do);
+  fillList(mDont, z.dont);
+  mOneLiner.textContent = z.oneLiner || "";
+
+  fillList(mMatchGood, z.matchGood);
+  fillList(mMatchHard, z.matchHard);
+  mMatchNote.textContent = z.matchNote || "";
+
+  btnWiki.href = z.wiki || "#";
 
   modal.classList.remove("hidden");
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow="hidden";
+
+  showTab("overview");
 }
 
 function closeModal(){
   modal.classList.add("hidden");
-  document.body.style.overflow = "";
+  document.body.style.overflow="";
   active = null;
 }
 
-btnClose.addEventListener("click", closeModal);
-modal.addEventListener("click", (e)=>{ if(e.target === modal) closeModal(); });
-document.addEventListener("keydown", (e)=>{ if(e.key === "Escape" && !modal.classList.contains("hidden")) closeModal(); });
+// close events
+btnClose.onclick = closeModal;
+modal.onclick = (e)=>{ if(e.target === modal) closeModal(); };
+document.addEventListener("keydown",(e)=>{ if(e.key==="Escape" && !modal.classList.contains("hidden")) closeModal(); });
 
+// tab events
+document.querySelectorAll(".tabBtn").forEach(btn=>{
+  btn.addEventListener("click", ()=> showTab(btn.dataset.tab));
+});
+
+// copy share
 btnCopy.addEventListener("click", async ()=>{
   if(!active) return;
+  const z = active;
   const text =
-`我看了「${active.cn} ${active.en}」${active.emoji}
-元素：${ELEMENT_LABEL[active.elem]}｜日期：${active.date}
-关键词：${active.keywords.join(" / ")}
-一句话：${active.quote}
-相处建议：${active.tips}
+`【${z.cn} ${z.en}】${z.emoji}
+元素：${ELEMENT_LABEL[z.elem]}｜日期：${z.date}
+核心驱动力：${z.drive}
+一句话：${z.quote}
+相处建议：${z.tips}
 
+#关键词：${(z.keywords||[]).join(" / ")}
 你也来看看：${location.href}`;
 
   if(navigator.share){
-    try{ await navigator.share({ title:`${active.cn}讲解`, text, url: location.href }); return; }catch(_){}
+    try{ await navigator.share({ title:`${z.cn}深度讲解`, text, url: location.href }); return; }catch(_){}
   }
-  try{
-    await navigator.clipboard.writeText(text);
-    alert("已复制分享文案 ✅");
-  }catch(e){
-    prompt("复制下面内容：", text);
-  }
+  try{ await navigator.clipboard.writeText(text); alert("已复制分享文案 ✅"); }
+  catch(e){ prompt("复制下面内容：", text); }
 });
 
-// ---------- Search + Filter ----------
-function normalize(s){ return (s||"").toLowerCase().replace(/\s+/g,""); }
-
+// search + filter
 function apply(){
   const q = normalize(search.value);
-  const list = ZODIAC.filter(z => {
-    const hitElem = (activeFilter === "all") || (z.elem === activeFilter);
-    if(!hitElem) return false;
+  const list = ZODIAC.filter(z=>{
+    const okElem = (activeFilter==="all") || (z.elem===activeFilter);
+    if(!okElem) return false;
     if(!q) return true;
-
     const hay = normalize([
-      z.cn, z.en, z.date, ELEMENT_LABEL[z.elem],
-      z.keywords.join(" "), z.pros.join(" "), z.cons.join(" ")
+      z.cn,z.en,z.date,ELEMENT_LABEL[z.elem],
+      (z.keywords||[]).join(" "),
+      (z.quote||""),
+      (z.drive||""),
     ].join(" "));
     return hay.includes(q);
   });
   renderGrid(list);
 }
-
 search.addEventListener("input", apply);
 
 document.querySelectorAll(".segBtn").forEach(btn=>{
@@ -280,16 +440,11 @@ document.querySelectorAll(".segBtn").forEach(btn=>{
   });
 });
 
-// ---------- Theme ----------
+// theme
 function applyTheme(mode){
   const root = document.documentElement;
-  if(mode==="light"){
-    root.setAttribute("data-theme","light");
-    btnTheme.textContent="☀️";
-  }else{
-    root.setAttribute("data-theme","");
-    btnTheme.textContent="🌙";
-  }
+  if(mode==="light"){ root.setAttribute("data-theme","light"); btnTheme.textContent="☀️"; }
+  else { root.setAttribute("data-theme",""); btnTheme.textContent="🌙"; }
 }
 function loadTheme(){
   try{
@@ -297,12 +452,12 @@ function loadTheme(){
     applyTheme(saved==="light" ? "light" : "dark");
   }catch(_){ applyTheme("dark"); }
 }
-btnTheme.addEventListener("click", ()=>{
+btnTheme.onclick = ()=>{
   const isLight = document.documentElement.getAttribute("data-theme")==="light";
   const next = isLight ? "dark" : "light";
   try{ localStorage.setItem("zodiac_theme", next); }catch(_){}
   applyTheme(next);
-});
+};
 
 // init
 loadTheme();
