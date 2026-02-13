@@ -1,114 +1,177 @@
-<!doctype html>
-<html lang="zh-Hans">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>12星座讲解｜Zodiac Mini App</title>
-  <meta name="description" content="12星座快速讲解：性格、优点、雷点、恋爱、工作、相处建议。支持搜索、元素筛选、深浅色与一键复制分享。" />
-  <link rel="stylesheet" href="style.css?v=1" />
-</head>
-<body>
-  <div class="wrap">
-    <header class="topbar">
-      <div class="brand">
-        <div class="logo">♈︎</div>
+<!-- MODAL -->
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="星座详情">
+  <div class="modalCard">
+    <div class="modalTop">
+      <div class="modalTitle">
+        <div id="mEmoji" class="badge">♈︎</div>
         <div>
-          <div class="title">12星座讲解</div>
-          <div class="subtitle">一键速览 · 轻松但高级 · 可分享</div>
+          <div id="mName" class="mName">白羊座 Aries</div>
+          <div id="mDate" class="mDate">3/21 - 4/19 · 火象</div>
         </div>
       </div>
-      <button id="btnTheme" class="btn" type="button">🌙</button>
-    </header>
+      <button id="btnClose" class="iconBtn" type="button" aria-label="关闭">✕</button>
+    </div>
 
-    <section class="hero">
-      <h1>选择一个<span class="hl">星座</span>开始</h1>
-      <p class="muted">
-        这里是“好理解、能转发、不吵架”的星座说明书：更偏向相处策略，而不是宿命论。
-      </p>
+    <div class="mQuote" id="mQuote"></div>
 
-      <div class="toolbar">
-        <input id="search" class="search" placeholder="搜索：白羊 / Aries / 火象 / 3月…" />
-        <div class="seg" role="tablist" aria-label="元素筛选">
-          <button class="segBtn active" data-filter="all" type="button">全部</button>
-          <button class="segBtn" data-filter="fire" type="button">火象</button>
-          <button class="segBtn" data-filter="earth" type="button">土象</button>
-          <button class="segBtn" data-filter="air" type="button">风象</button>
-          <button class="segBtn" data-filter="water" type="button">水象</button>
+    <!-- Tabs -->
+    <div class="tabs" role="tablist" aria-label="内容切换">
+      <button class="tabBtn active" data-tab="overview" type="button">总览</button>
+      <button class="tabBtn" data-tab="deep" type="button">深度性格</button>
+      <button class="tabBtn" data-tab="talk" type="button">沟通&冲突</button>
+      <button class="tabBtn" data-tab="love" type="button">恋爱</button>
+      <button class="tabBtn" data-tab="work" type="button">学业/工作</button>
+      <button class="tabBtn" data-tab="tips" type="button">相处建议</button>
+      <button class="tabBtn" data-tab="match" type="button">适配对象</button>
+    </div>
+
+    <!-- Panels -->
+    <div id="panelOverview" class="panel">
+      <div class="mGrid">
+        <div class="mBox">
+          <h3>关键词</h3>
+          <div id="mKeywords" class="chips"></div>
         </div>
-      </div>
-
-      <div class="pillRow">
-        <span class="pill">🔎 搜索</span>
-        <span class="pill">🌪 元素筛选</span>
-        <span class="pill">📌 可复制分享</span>
-        <span class="pill">🌗 深浅色</span>
-      </div>
-    </section>
-
-    <main>
-      <section id="grid" class="grid" aria-label="星座列表"></section>
-    </main>
-
-    <!-- MODAL -->
-    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="星座详情">
-      <div class="modalCard">
-        <div class="modalTop">
-          <div class="modalTitle">
-            <div id="mEmoji" class="badge">♈︎</div>
-            <div>
-              <div id="mName" class="mName">白羊座 Aries</div>
-              <div id="mDate" class="mDate">3/21 - 4/19 · 火象</div>
-            </div>
-          </div>
-          <button id="btnClose" class="iconBtn" type="button" aria-label="关闭">✕</button>
+        <div class="mBox">
+          <h3>核心驱动力</h3>
+          <p id="mDrive" class="muted"></p>
         </div>
-
-        <div class="mQuote" id="mQuote"></div>
-
-        <div class="mGrid">
-          <div class="mBox">
-            <h3>性格关键词</h3>
-            <div id="mKeywords" class="chips"></div>
-          </div>
-
-          <div class="mBox">
-            <h3>优点</h3>
-            <ul id="mPros" class="list"></ul>
-          </div>
-
-          <div class="mBox">
-            <h3>雷点</h3>
-            <ul id="mCons" class="list"></ul>
-          </div>
-
-          <div class="mBox">
-            <h3>恋爱风格</h3>
-            <p id="mLove" class="muted"></p>
-          </div>
-
-          <div class="mBox">
-            <h3>工作/学习</h3>
-            <p id="mWork" class="muted"></p>
-          </div>
-
-          <div class="mBox tipBox">
-            <h3>相处建议</h3>
-            <p id="mTips" class="tip"></p>
-          </div>
+        <div class="mBox">
+          <h3>外在 vs 内在</h3>
+          <ul id="mOuterInner" class="list"></ul>
         </div>
-
-        <div class="modalActions">
-          <button id="btnCopy" class="primary" type="button">复制分享文案</button>
-          <a id="btnWiki" class="ghostLink" href="#" target="_blank" rel="noopener">查看更详细资料 ↗</a>
+        <div class="mBox">
+          <h3>安全感开关</h3>
+          <ul id="mSafety" class="list"></ul>
         </div>
       </div>
     </div>
 
-    <footer class="footer muted small">
-      © <span id="year"></span> Zodiac Mini App · Made for GitHub Pages
-    </footer>
-  </div>
+    <div id="panelDeep" class="panel hidden">
+      <div class="mGrid">
+        <div class="mBox">
+          <h3>强项</h3>
+          <ul id="mPros" class="list"></ul>
+        </div>
+        <div class="mBox">
+          <h3>盲点</h3>
+          <ul id="mCons" class="list"></ul>
+        </div>
+        <div class="mBox">
+          <h3>情绪触发点</h3>
+          <ul id="mTriggers" class="list"></ul>
+        </div>
+        <div class="mBox">
+          <h3>当TA状态很好时</h3>
+          <ul id="mAtBest" class="list"></ul>
+        </div>
+      </div>
+    </div>
 
-  <script src="script.js"></script>
-</body>
-</html>
+    <div id="panelTalk" class="panel hidden">
+      <div class="mGrid">
+        <div class="mBox">
+          <h3>沟通偏好</h3>
+          <ul id="mComm" class="list"></ul>
+        </div>
+        <div class="mBox">
+          <h3>冲突模式</h3>
+          <ul id="mConflict" class="list"></ul>
+        </div>
+        <div class="mBox tipBox">
+          <h3>快速和解公式</h3>
+          <p id="mRepair" class="tip"></p>
+        </div>
+        <div class="mBox">
+          <h3>千万别这样说</h3>
+          <ul id="mDontSay" class="list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="panelLove" class="panel hidden">
+      <div class="mGrid">
+        <div class="mBox">
+          <h3>心动模式</h3>
+          <p id="mCrush" class="muted"></p>
+        </div>
+        <div class="mBox">
+          <h3>亲密需求</h3>
+          <ul id="mIntimacy" class="list"></ul>
+        </div>
+        <div class="mBox">
+          <h3>恋爱雷区</h3>
+          <ul id="mLoveMines" class="list"></ul>
+        </div>
+        <div class="mBox tipBox">
+          <h3>恋爱加分项</h3>
+          <p id="mLovePlus" class="tip"></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="panelWork" class="panel hidden">
+      <div class="mGrid">
+        <div class="mBox">
+          <h3>适合的环境</h3>
+          <ul id="mEnv" class="list"></ul>
+        </div>
+        <div class="mBox">
+          <h3>高效方法</h3>
+          <ul id="mHack" class="list"></ul>
+        </div>
+        <div class="mBox">
+          <h3>容易卡住的点</h3>
+          <ul id="mStuck" class="list"></ul>
+        </div>
+        <div class="mBox tipBox">
+          <h3>成长建议</h3>
+          <p id="mGrowth" class="tip"></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="panelTips" class="panel hidden">
+      <div class="mGrid">
+        <div class="mBox tipBox">
+          <h3>相处总原则</h3>
+          <p id="mTips" class="tip"></p>
+        </div>
+        <div class="mBox">
+          <h3>相处 Do</h3>
+          <ul id="mDo" class="list"></ul>
+        </div>
+        <div class="mBox">
+          <h3>相处 Don’t</h3>
+          <ul id="mDont" class="list"></ul>
+        </div>
+        <div class="mBox">
+          <h3>一句话读懂TA</h3>
+          <p id="mOneLiner" class="muted"></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="panelMatch" class="panel hidden">
+      <div class="mGrid">
+        <div class="mBox">
+          <h3>更容易合拍的类型</h3>
+          <ul id="mMatchGood" class="list"></ul>
+        </div>
+        <div class="mBox">
+          <h3>容易摩擦的类型</h3>
+          <ul id="mMatchHard" class="list"></ul>
+        </div>
+        <div class="mBox tipBox">
+          <h3>提醒</h3>
+          <p id="mMatchNote" class="tip"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modalActions">
+      <button id="btnCopy" class="primary" type="button">复制分享文案</button>
+      <a id="btnWiki" class="ghostLink" href="#" target="_blank" rel="noopener">维基百科 ↗</a>
+    </div>
+  </div>
+</div>
