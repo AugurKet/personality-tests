@@ -2,6 +2,7 @@
    Zodiac Deep Data (12 Signs)
    用于 zodiac-12 mini app
 ========================================================= */
+alert("zodiac-data loaded");
 
 const ZODIAC = [
 
