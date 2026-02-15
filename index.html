@@ -2,16 +2,16 @@
 <html lang="zh-Hans">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Personality Tests | 人格测验合集</title>
-  <meta name="description"
-        content="人格测验合集：动物人格、恋爱人格、OCEAN五大人格、亲子互动风格、孩子对父母Q&A小报告等。支持手机，结果可分享。" />
-  <link rel="stylesheet" href="style.css?v=5" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personality Tests ｜人格测验合集</title>
+  <meta name="description" content="轻量、好玩、适合分享的人格测验合集。手机友好、无需登录、适合GitHub Pages。" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <div class="wrap">
 
+    <!-- Top -->
     <header class="topbar">
       <div class="brand">
         <div class="logo">🧠</div>
@@ -20,11 +20,13 @@
           <div class="subtitle">人格测验合集 · 适合手机 · 可分享</div>
         </div>
       </div>
-      <button id="btnTheme" class="btn" type="button">🌙</button>
+
+      <button id="btnTheme" class="btn" type="button" aria-label="toggle theme">🌙</button>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
-      <h1>欢迎来到<span class="hl hl-blue">人格测验专区</span></h1>
+      <h1>欢迎来到 <span class="hl">人格测验专区</span></h1>
       <p>
         这里收录了一系列轻量、好玩、适合传播的测验小游戏。
         你可以把结果分享给朋友一起玩，也可以持续扩展成一个测验站点。
@@ -36,125 +38,152 @@
         <span class="pill">✨ Shareable</span>
         <span class="pill">🧩 Easy to expand</span>
       </div>
+
+      <div class="toolbar">
+        <input id="search" class="search" type="search" placeholder="搜索测验（例如：亲子、星座、OCEAN、恋爱）" autocomplete="off" />
+      </div>
     </section>
 
-    <section class="grid" aria-label="测试列表">
+    <!-- Grid -->
+    <main>
+      <div id="grid" class="grid"></div>
+    </main>
 
-      <!-- 动物人格 -->
-      <div class="card card-green">
-        <div class="tag"><span class="dot green"></span>娱乐型</div>
-        <h2><span class="hl hl-green">动物人格</span>测试</h2>
-        <p>15题测出你的性格动物类型，并给出优势/盲点/建议。</p>
-        <div class="metaRow">
-          <span class="chip">15题</span>
-          <span class="chip">8类型</span>
-          <span class="chip">可分享</span>
-        </div>
-        <a class="cta" href="./animal-personality/">开始测试 →</a>
-      </div>
-
-      <!-- 恋爱人格 -->
-      <div class="card card-pink">
-        <div class="tag"><span class="dot pink"></span>甜甜风</div>
-        <h2>恋爱人格测试（<span class="hl hl-pink">甜甜版</span>）</h2>
-        <p>含百分比条、最佳匹配与分享文案。</p>
-        <div class="metaRow">
-          <span class="chip">15题</span>
-          <span class="chip">6类型</span>
-          <span class="chip">匹配建议</span>
-        </div>
-        <a class="cta" href="./love-personality/">开始测试 →</a>
-      </div>
-
-      <!-- OCEAN -->
-      <div class="card card-blue">
-        <div class="tag"><span class="dot blue"></span>心理学风</div>
-        <h2><span class="hl hl-blue">OCEAN</span> 五大人格测评</h2>
-        <p>20题量表输出五维分数（0-100），报告风解释与建议。</p>
-        <div class="metaRow">
-          <span class="chip">20题</span>
-          <span class="chip">五维画像</span>
-          <span class="chip">报告风</span>
-        </div>
-        <a class="cta" href="./ocean-assessment/">开始测评 →</a>
-      </div>
-
-      <!-- 亲子互动风格 -->
-      <div class="card card-mint">
-        <div class="tag"><span class="dot green"></span>亲子关系</div>
-        <h2><span class="hl hl-green">亲子互动</span>风格测验</h2>
-        <p>15题温柔鼓励版：优势/盲点/孩子感受/一条建议，结果可分享。</p>
-        <div class="metaRow">
-          <span class="chip">15题</span>
-          <span class="chip">温柔版</span>
-          <span class="chip">可分享</span>
-        </div>
-        <a class="cta" href="./parenting-style/">开始测验 →</a>
-      </div>
-
-      <!-- 孩子对父母Q&A -->
-      <div class="card card-purple">
-        <div class="tag"><span class="dot blue"></span>沟通工具</div>
-        <h2>孩子对父母<span class="hl hl-blue">Q&amp;A</span></h2>
-        <p>孩子回答12题，自动生成“给爸妈的小报告”，可编辑后直接复制发送。</p>
-        <div class="metaRow">
-          <span class="chip">12题</span>
-          <span class="chip">可编辑</span>
-          <span class="chip">可复制</span>
-        </div>
-        <a class="cta" href="./kid-to-parents-qa/">生成小报告 →</a>
-      </div>
-
-      <!-- 青少年版：如果你还没上线 teen-vibe，就删掉这一块 -->
-      <div class="card card-orange">
-        <div class="tag"><span class="dot pink"></span>青少年</div>
-        <h2>校园生存风格（<span class="hl hl-pink">Teen</span>）</h2>
-        <p>12题测出校园角色：社交王者/观察者/学霸/灵感玩家等，结果可晒。</p>
-        <div class="metaRow">
-          <span class="chip">12题</span>
-          <span class="chip">可晒</span>
-          <span class="chip">轻松</span>
-        </div>
-        <a class="cta" href="./teen-vibe/">开始测试 →</a>
-      </div>
-
-    </section>
-
-    <footer class="footer muted small">
-      © <span id="year"></span> Personality Tests · Made for GitHub Pages
+    <footer class="footer">
+      <p class="small muted">提示：以后每新增一个测验，只要在这个页面加一张卡片并链接到对应文件夹即可。</p>
+      <p class="small muted">© <span id="year"></span> Personality Tests · Made for GitHub Pages</p>
     </footer>
 
   </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // ====== Data: update your directory here ======
+    const TESTS = [
+      {
+        href: "./animal-personality/",
+        badge: "娱乐型 · 动物人格",
+        title: "动物人格测试",
+        desc: "15题测出你的性格动物类型，并给出优势/盲点/建议，适合分享。",
+        tags: ["15题", "8类型", "可分享"],
+        theme: "t1"
+      },
+      {
+        href: "./love-personality/",
+        badge: "甜甜风 · 恋爱人格",
+        title: "恋爱人格测试（甜甜版）",
+        desc: "含百分比条、最佳匹配与分享文案，让结果更像“报告”。",
+        tags: ["15题", "6类型", "匹配建议"],
+        theme: "t2"
+      },
+      {
+        href: "./ocean-assessment/",
+        badge: "高端心理学风 · OCEAN",
+        title: "OCEAN 五大人格测评",
+        desc: "20题快速画像五维分数（0–100），含报告风解释与可执行建议。",
+        tags: ["20题", "五维画像", "报告风"],
+        theme: "t3"
+      },
+      {
+        href: "./parenting-style/",
+        badge: "亲子关系 · 父母风格",
+        title: "教养风格测试",
+        desc: "测出你的教养倾向与沟通盲点，给出可执行的互动建议。",
+        tags: ["亲子", "沟通", "建议"],
+        theme: "t4"
+      },
+      {
+        href: "./kid-to-parents-qa/",
+        badge: "孩子问父母 · Q&A",
+        title: "孩子对父母的Q&A",
+        desc: "适合亲子对话的问答卡，帮助孩子表达、父母更懂孩子。",
+        tags: ["亲子", "对话", "卡片"],
+        theme: "t5"
+      },
+      {
+        href: "./kids-qa/",
+        badge: "18岁以下 · 轻量测试",
+        title: "青少年小屁孩测试",
+        desc: "轻松有趣、偏温和，适合18岁以下，适合分享给同学朋友。",
+        tags: ["青少年", "温和", "分享"],
+        theme: "t6"
+      },
+      {
+        href: "./teen-vibe/",
+        badge: "校园氛围 · Teen Vibe",
+        title: "Teen Vibe 氛围测试",
+        desc: "测测你在同龄圈的“气场类型”，并给出提升建议与社交提示。",
+        tags: ["氛围", "社交", "建议"],
+        theme: "t7"
+      },
+      {
+        href: "./zodiac-12/",
+        badge: "星座专题 · 深度解析",
+        title: "12 星座深度解析",
+        desc: "性格/恋爱/沟通/冲突/成长一站式说明书，支持搜索与分享。",
+        tags: ["星座", "深度", "可分享"],
+        theme: "t8"
+      }
+    ];
 
-    const btn = document.getElementById("btnTheme");
-    const root = document.documentElement;
+    const $ = (sel) => document.querySelector(sel);
+    const grid = $("#grid");
+    const search = $("#search");
+    const yearEl = $("#year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+    function normalize(s){ return (s||"").toLowerCase().replace(/\s+/g,""); }
+
+    function render(list){
+      grid.innerHTML = "";
+      list.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card cardTheme " + item.theme;
+
+        card.innerHTML = `
+          <div class="cardBadge">${item.badge}</div>
+          <div class="cardTitle">${item.title}</div>
+          <div class="cardDesc">${item.desc}</div>
+          <div class="tagRow">
+            ${(item.tags||[]).map(t => `<span class="tag">${t}</span>`).join("")}
+          </div>
+          <a class="cardBtn" href="${item.href}">开始 →</a>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function applySearch(){
+      const q = normalize(search.value);
+      if (!q){ render(TESTS); return; }
+      const filtered = TESTS.filter(t => {
+        const hay = normalize([t.badge,t.title,t.desc,(t.tags||[]).join(" ")].join(" "));
+        return hay.includes(q);
+      });
+      render(filtered);
+    }
+
+    search?.addEventListener("input", applySearch);
+
+    // Theme toggle (works only if style.css supports data-theme)
+    const btnTheme = $("#btnTheme");
     function applyTheme(mode){
-      if(mode === "light"){
+      const root = document.documentElement;
+      if (mode === "light"){
         root.setAttribute("data-theme","light");
-        btn.textContent="☀️";
-      }else{
-        root.setAttribute("data-theme","");
-        btn.textContent="🌙";
+        btnTheme.textContent = "☀️";
+      } else {
+        root.removeAttribute("data-theme");
+        btnTheme.textContent = "🌙";
       }
     }
-
-    function loadTheme(){
-      const saved = localStorage.getItem("pt_theme");
-      applyTheme(saved==="light" ? "light" : "dark");
-    }
-
-    btn.addEventListener("click", ()=>{
-      const isLight = root.getAttribute("data-theme")==="light";
-      const next = isLight ? "dark" : "light";
-      localStorage.setItem("pt_theme", next);
-      applyTheme(next);
+    btnTheme?.addEventListener("click", () => {
+      const isLight = document.documentElement.getAttribute("data-theme")==="light";
+      applyTheme(isLight ? "dark" : "light");
     });
+    applyTheme("dark");
 
-    loadTheme();
+    // First paint
+    render(TESTS);
   </script>
 </body>
 </html>
