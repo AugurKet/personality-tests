@@ -495,3 +495,4 @@ const ZODIAC = [
   
 ];
 
+window.ZODIAC = ZODIAC;
